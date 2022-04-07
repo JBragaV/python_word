@@ -1,4 +1,5 @@
 from docx import Document
+from docx.enum.text import WD_PARAGRAPH_ALIGNMENT
 from datetime import datetime
 
 LISTA_MESES = ["Janeiro", "Fevereiro", "Março", "Abril",
@@ -12,10 +13,11 @@ def iniciar(caminho_arquivo=None):
         arquivo = open(caminho_arquivo, 'rb')
         documento = Document(arquivo)
         documento.add_heading(f"Trocas de {mes_sistema}", 0)
+        # cabeca.paragraph_format.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
         trocas = [
             ['Felipe', '24/06/2024', 'A', 'Jocimar', "18/11/1982", 'D'],
             ['Jocimar', '18/11/1982', 'B', 'Dadada', "06/05/1988", 'A'],
-            ['Haynes', '24/11/2020', 'C', 'Manuzinha linda', "20/06/2013", 'B'],
+            ['Haynes', '24/11/2020', 'C', 'Manuela', "20/06/2013", 'B'],
             ['Felipe', '24/06/2024', 'A', 'Jocimar', "18/11/1982", 'D'],
             # (Instrutor, Categoria, Quantidade)
         ]
@@ -85,12 +87,12 @@ def iniciar(caminho_arquivo=None):
         #     linha[5].text = data
         #
         # print(tabela.rows[2].cells[3].text)
-        documento.save(caminho_arquivo)
+        documento.save(f"{caminho_arquivo}")
         return
     print("Deu um erro aí!!!")
 
 
 if __name__ == '__main__':
     # iniciar("arquivo_base_trocas.docx")
-    iniciar("TROCAS.docx")
-    # iniciar()
+    iniciar("TROCAS_ex_pdf.docx")
+    # iniciar('Doc1.docx')
