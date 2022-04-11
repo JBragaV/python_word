@@ -1,9 +1,6 @@
 from openpyxl import load_workbook
 
-"""
-Colunas solicitante => a h i
-Colunas solicitado  => b k l
-"""
+
 def abrir_excel():
     wb = load_workbook(filename=r"C:\Users\jbrag\PycharmProjects\python_word\pasta_troca_excel\trocas_10-04-2022.xlsx")
     planilha = wb["Report"]

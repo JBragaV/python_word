@@ -1,5 +1,6 @@
 from docx import Document
 from docx.enum.text import WD_PARAGRAPH_ALIGNMENT
+from docx.enum.table import WD_TABLE_ALIGNMENT
 from docx.enum.style import WD_STYLE_TYPE
 from docx.shared import Pt
 from datetime import datetime
@@ -19,12 +20,12 @@ def iniciar(caminho_arquivo=None):
         arquivo = open(caminho_arquivo, 'rb')
         documento = Document(arquivo)
         paragrafo_estilo = documento.add_paragraph("")
-        paragrafo_estilo.style = documento.styles.add_style("Title", WD_STYLE_TYPE.PARAGRAPH)
+        # paragrafo_estilo.style = documento.styles.add_style("Title", WD_STYLE_TYPE.PARAGRAPH)
         titulo = documento.add_heading(f"Trocas de {mes_sistema}", 0)
         font = titulo.style.font
         font.name = 'Time New Roman'
         font.size = Pt(24)
-        # cabeca.paragraph_format.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
+        titulo.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
         """trocas = [
             ['Felipe', '24/06/2024', 'A', 'Jocimar', "18/11/1982", 'D'],
             ['Jocimar', '18/11/1982', 'B', 'Dadada', "06/05/1988", 'A'],
